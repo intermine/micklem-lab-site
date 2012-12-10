@@ -1,0 +1,15 @@
+{
+    "name": "micklem-lab-blad",
+    "author": "Radek <rs676@cam.ac.uk>",
+    "version": "0.0.1",
+    "dependencies": {
+        "blad": "XXX",
+        "marked": "0.2.5",
+        "kronic-node": "0.0.1",
+        "request": "2.9.203",
+        "sax": "0.4.2"
+    },
+    "scripts": {
+        "start": "start.js"
+    }
+}
