@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class PeopleHolderDocument extends Blað.Type
+class exports.PeopleHolderDocument
 
     render: (done) ->
         # Sort people Gos first, then by surname.
@@ -14,5 +14,3 @@ class PeopleHolderDocument extends Blað.Type
         @body = marked @body
 
         done @
-
-Blað.types.PeopleHolderDocument = PeopleHolderDocument

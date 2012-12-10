@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class GrantDocument extends Blað.Type
+class exports.GrantDocument
 
     render: (done) ->
         # Get other grants.
@@ -24,5 +24,3 @@ class GrantDocument extends Blað.Type
 
             # We done.
             done @
-
-Blað.types.GrantDocument = GrantDocument

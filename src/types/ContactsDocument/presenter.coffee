@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class ContactsDocument extends Blað.Type
+class exports.ContactsDocument
 
     render: (done) ->
         # Markdown?
@@ -12,5 +12,3 @@ class ContactsDocument extends Blað.Type
         ) if @email?
 
         done @
-
-Blað.types.ContactsDocument = ContactsDocument

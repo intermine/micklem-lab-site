@@ -1,7 +1,7 @@
 marked = require 'marked'
 kronic = require 'kronic-node'
 
-class NewsHolderDocument extends Blað.Type
+class exports.NewsHolderDocument
 
     render: (done) ->
         # Do we have any more articles?
@@ -37,5 +37,3 @@ class NewsHolderDocument extends Blað.Type
             @articles = ( format article for article in all[0...@latest] )
         
         done @
-
-Blað.types.NewsHolderDocument = NewsHolderDocument

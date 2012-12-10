@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class ResourcesHolderDocument extends Blað.Type
+class exports.ResourcesHolderDocument
 
     render: (done) ->
         # Get all resources and sort them alphabetically apart from InterMine.
@@ -12,5 +12,3 @@ class ResourcesHolderDocument extends Blað.Type
         
         # We done.
         done @
-
-Blað.types.ResourcesHolderDocument = ResourcesHolderDocument

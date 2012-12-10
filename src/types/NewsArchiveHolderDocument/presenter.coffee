@@ -1,7 +1,7 @@
 marked = require 'marked'
 kronic = require 'kronic-node'
 
-class NewsArchiveHolderDocument extends Blað.Type
+class exports.NewsArchiveHolderDocument
 
     render: (done) ->
         @parent (parent) =>
@@ -28,5 +28,3 @@ class NewsArchiveHolderDocument extends Blað.Type
                     )[latest...] )
                 
                 done @
-
-Blað.types.NewsArchiveHolderDocument = NewsArchiveHolderDocument

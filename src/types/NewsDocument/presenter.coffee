@@ -1,9 +1,7 @@
 marked = require 'marked'
 
-class NewsDocument extends Blað.Type
+class exports.NewsDocument
 
     render: (done) ->
         @body = marked @body
         done @
-
-Blað.types.NewsDocument = NewsDocument

@@ -2,7 +2,7 @@ request = require 'request'
 kronic = require 'kronic-node'
 sax = require('sax').parser(true)
 
-class PublicationsHolderDocument extends Blað.Type
+class exports.PublicationsHolderDocument
 
     eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Micklem%20G%5bauthor%5d'
     eSummary: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id='
@@ -80,5 +80,3 @@ class PublicationsHolderDocument extends Blað.Type
         sax.onend = -> cb docs
 
         sax.write(xml).close()
-
-Blað.types.PublicationsHolderDocument = PublicationsHolderDocument

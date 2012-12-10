@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class ProjectsArchiveHolderDocument extends Blað.Type
+class exports.ProjectsArchiveHolderDocument
 
     render: (done) ->
         # Get all not current projects at our level.
@@ -16,5 +16,3 @@ class ProjectsArchiveHolderDocument extends Blað.Type
             
             # We done.
             done @
-
-Blað.types.ProjectsArchiveHolderDocument = ProjectsArchiveHolderDocument

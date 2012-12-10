@@ -1,6 +1,6 @@
-# Blað
+# blað
 
-A forms based [node.js](http://nodejs.org/) CMS ala [SilverStripe](http://www.silverstripe.com/), but smaller.
+A forms based [Node.js](http://nodejs.org/) CMS ala [SilverStripe](http://www.silverstripe.com/), but smaller.
 
 The idea was to create a RESTful CMS API that would be edited using a client side app. On the backend, we use [flatiron](http://flatironjs.org/) and on the frontend [chaplin](https://github.com/chaplinjs/chaplin) that itself wraps [Backbone.js](http://documentcloud.github.com/backbone/).
 
@@ -147,15 +147,15 @@ Each document has a custom class that determines how it is rendered. It has to o
 ```coffeescript
 marked = require 'marked'
 
-class MarkdownDocument extends Blað.Type
+class MarkdownDocument extends blað.Type
 
     # Presentation for the document.
     render: (done) -> done 'html': marked @markup
 
-Blað.types.MarkdownDocument = MarkdownDocument
+blað.types.MarkdownDocument = MarkdownDocument
 ```
 
-Extending the `Blað.Type` class gives us the following helpers:
+Extending the `blað.Type` class gives us the following helpers:
 
 * `@children()` or `@children(n)` that returns public and private documents (optionally of a specific level) that begin with the same URL as the current document... its children.
 * `@menu()` that returns public and private top level documents; those documents that have only a leading slash in its URL.

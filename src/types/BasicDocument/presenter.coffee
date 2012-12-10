@@ -1,11 +1,9 @@
 marked = require 'marked'
 
-class BasicDocument extends Blað.Type
+class exports.BasicDocument
 
     render: (done) ->
         # Markdown?
         @body = marked @body if @body?
 
         done @
-
-Blað.types.BasicDocument = BasicDocument

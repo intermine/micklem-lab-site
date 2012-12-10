@@ -1,6 +1,6 @@
 marked = require 'marked'
 
-class ProjectDocument extends Blað.Type
+class exports.ProjectDocument
 
     render: (done) ->
         # Get other projects.
@@ -42,5 +42,3 @@ class ProjectDocument extends Blað.Type
             
             # We done.
             done @
-
-Blað.types.ProjectDocument = ProjectDocument

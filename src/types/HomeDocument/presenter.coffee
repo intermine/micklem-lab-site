@@ -2,7 +2,7 @@ marked = require 'marked'
 request = require 'request'
 kronic = require 'kronic-node'
 
-class HomeDocument extends Blað.Type
+class exports.HomeDocument
 
     twitter: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=intermineorg&count=1'
 
@@ -69,8 +69,6 @@ class HomeDocument extends Blað.Type
             @tweet = @store.get 'tweet'
             @tweet.ago = kronic.format new Date @tweet.created_at
             done @
-
-Blað.types.HomeDocument = HomeDocument
 
 # Seed array randomly.
 randomArray = (arr) ->

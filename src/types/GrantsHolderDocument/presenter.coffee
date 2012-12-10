@@ -1,4 +1,4 @@
-class GrantsHolderDocument extends Blað.Type
+class exports.GrantsHolderDocument
 
     render: (done) ->
         # Get all current grants underneath.
@@ -9,5 +9,3 @@ class GrantsHolderDocument extends Blað.Type
         
         # We done.
         done @
-
-Blað.types.GrantsHolderDocument = GrantsHolderDocument
