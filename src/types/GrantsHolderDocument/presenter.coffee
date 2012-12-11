@@ -1,4 +1,6 @@
-class exports.GrantsHolderDocument
+{ blað } = require 'blad'
+
+class exports.GrantsHolderDocument extends blað.Type
 
     render: (done) ->
         # Get all current grants underneath.

@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.PeopleHolderDocument
+class exports.PeopleHolderDocument extends blað.Type
 
     render: (done) ->
         # Sort people Gos first, then by surname.

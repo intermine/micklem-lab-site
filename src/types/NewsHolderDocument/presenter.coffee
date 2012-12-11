@@ -1,7 +1,9 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 kronic = require 'kronic-node'
 
-class exports.NewsHolderDocument
+class exports.NewsHolderDocument extends blað.Type
 
     render: (done) ->
         # Do we have any more articles?

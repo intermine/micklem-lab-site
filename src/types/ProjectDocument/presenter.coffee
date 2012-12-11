@@ -1,6 +1,9 @@
-marked = require 'marked'
+{ blað } = require 'blad'
 
-class exports.ProjectDocument
+marked = require 'marked'
+kronic = require 'kronic-node'
+
+class exports.ProjectDocument extends blað.Type
 
     render: (done) ->
         # Get other projects.

@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.BasicDocument
+class exports.BasicDocument extends blað.Type
 
     render: (done) ->
         # Markdown?

@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.ProjectsArchiveHolderDocument
+class exports.ProjectsArchiveHolderDocument extends blað.Type
 
     render: (done) ->
         # Get all not current projects at our level.

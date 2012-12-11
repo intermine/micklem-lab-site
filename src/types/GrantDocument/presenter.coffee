@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.GrantDocument
+class exports.GrantDocument extends blað.Type
 
     render: (done) ->
         # Get other grants.

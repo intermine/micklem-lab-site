@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.ResourcesHolderDocument
+class exports.ResourcesHolderDocument extends blað.Type
 
     render: (done) ->
         # Get all resources and sort them alphabetically apart from InterMine.

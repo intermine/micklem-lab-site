@@ -1,8 +1,10 @@
+{ blað } = require 'blad'
+
 request = require 'request'
 kronic = require 'kronic-node'
 sax = require('sax').parser(true)
 
-class exports.PublicationsHolderDocument
+class exports.PublicationsHolderDocument extends blað.Type
 
     eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Micklem%20G%5bauthor%5d'
     eSummary: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id='

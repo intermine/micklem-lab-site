@@ -1,6 +1,8 @@
+{ blað } = require 'blad'
+
 marked = require 'marked'
 
-class exports.NewsDocument
+class exports.NewsDocument extends blað.Type
 
     render: (done) ->
         @body = marked @body
