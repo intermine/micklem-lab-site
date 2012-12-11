@@ -4,10 +4,10 @@
 
     <title>Micklem Lab | University of Cambridge</title>
 
-    <link rel="stylesheet" href="/public/css/foundation3.css">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/site/css/foundation3.css">
+    <link rel="stylesheet" href="/site/css/style.css">
 
-    <script src="/public/js/jquery-1.8.3.min.js"></script>
+    <script src="/site/js/jquery-1.8.3.min.js"></script>
     <script>
     $(function() {
         // For all links on the page that are not relative, open them in new window.
@@ -28,16 +28,16 @@
         <div class="twelve columns">
             <ul>
                 <li>
-                    <a target="_blank" href="http://www.cam.ac.uk/"><img src="/public/img/logo-cam.png" /></a>
+                    <a target="_blank" href="http://www.cam.ac.uk/"><img src="/site/img/logo-cam.png" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.gen.cam.ac.uk/"><img src="/public/img/logo-genetics.png" /></a>
+                    <a target="_blank" href="http://www.gen.cam.ac.uk/"><img src="/site/img/logo-genetics.png" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.sysbiol.cam.ac.uk/"><img src="/public/img/logo-csbc.png" /></a>
+                    <a target="_blank" href="http://www.sysbiol.cam.ac.uk/"><img src="/site/img/logo-csbc.png" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.ccbi.cam.ac.uk/"><img src="/public/img/logo-ccbi.png" /></a>
+                    <a target="_blank" href="http://www.ccbi.cam.ac.uk/"><img src="/site/img/logo-ccbi.png" /></a>
                 </li>
             </ul>
         </div>
@@ -49,19 +49,19 @@
             <p>Work at Micklem Lab is funded by:</p>
             <ul>
                 <li>
-                    <a target="_blank" href="http://www.epsrc.ac.uk/"><img src="/public/img/grants-color/epsrc.jpg" /></a>
+                    <a target="_blank" href="http://www.epsrc.ac.uk/"><img src="/site/img/grants-color/epsrc.jpg" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.kaust.edu.sa/"><img src="/public/img/grants-color/kaust.jpg" /></a>
+                    <a target="_blank" href="http://www.kaust.edu.sa/"><img src="/site/img/grants-color/kaust.jpg" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.genome.gov/"><img src="/public/img/grants-color/nhgri.jpg" /></a>
+                    <a target="_blank" href="http://www.genome.gov/"><img src="/site/img/grants-color/nhgri.jpg" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.nih.gov/"><img src="/public/img/grants-color/nih.jpg" /></a>
+                    <a target="_blank" href="http://www.nih.gov/"><img src="/site/img/grants-color/nih.jpg" /></a>
                 </li>
                 <li>
-                    <a target="_blank" href="http://www.wellcome.ac.uk/"><img src="/public/img/grants-color/wellcome.jpg" /></a>
+                    <a target="_blank" href="http://www.wellcome.ac.uk/"><img src="/site/img/grants-color/wellcome.jpg" /></a>
                 </li>
             </ul>
             <p>&copy; 2012, Micklem Lab</p>
