@@ -27,10 +27,10 @@ Define the config for your site in `config.json`:
 
 ```json
 {
-    "mongodb": "mongodb://localhost:27017/documents",
+    "mongodb": "use process.env.DATABASE_URL instead",
     "browserid": {
         "provider": "https://browserid.org/verify",
-        "salt":     "Q?RAf!CAkus?ejuCruKu",
+        "salt":     "use process.env.API_SALT instead",
         "users": [
             "radek.stepan@gmail.com",
             "jelena121@gmail.com",
