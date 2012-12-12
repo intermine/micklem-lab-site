@@ -1,6 +1,4 @@
-# blað example site
-
-An example site powered by [blað](https://github.com/radekstepan/blad) CMS.
+# micklem lab blað cms site
 
 ## Getting started
 

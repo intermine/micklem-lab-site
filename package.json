@@ -1,9 +1,9 @@
 {
-    "name": "micklem-lab-blad",
+    "name": "micklem-lab-site",
     "author": "Radek <rs676@cam.ac.uk>",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "dependencies": {
-        "blad": "2.0.4",
+        "blad": "2.0.5",
         "marked": "0.2.5",
         "kronic-node": "0.0.1",
         "request": "2.9.203",
