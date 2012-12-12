@@ -1,4 +1,4 @@
-# micklem lab blað cms site
+# Micklem Lab site
 
 ## Getting started
 
