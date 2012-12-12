@@ -4,7 +4,15 @@ An example site powered by [blað](https://github.com/radekstepan/blad) CMS.
 
 ## Getting started
 
-Make sure the [MongoDB](http://www.mongodb.org/display/DOCS/Quickstart) database has been installed and is started.
+The CMS that powers the site is developed in [Node.js](http://nodejs.org/), download the tarball and install it if not present:
+
+```bash
+$ ./configure
+$ make
+$ sudo make install
+```
+
+The CMS uses [MongoDB](http://www.mongodb.org/display/DOCS/Quickstart) as a backend database; to install and start it up:
 
 ```bash
 $ sudo apt-get install mongodb
@@ -17,7 +25,7 @@ Install the dependencies of this "app" which is `blad` and then whatever package
 $ npm install -d
 ```
 
-Define the config for your site:
+Define the config for your site in `config.json`:
 
 ```json
 {
@@ -35,6 +43,31 @@ Define the config for your site:
 ```
 
 <dl>
-    <dt>`mongodb`</dt>
-    <dd>Ipsum</dd>
+    <dt>mongodb</dt>
+    <dd>A uri to a MongoDB database</dd>
+    <dt>browserid.provider</dt>
+    <dd>A BrowserID provider, the default is Persona.org by Mozilla</dd>
+    <dt>browserid.salt</dt>
+    <dd>A salt used to hash credentials so that an API key can be generated and used by the Chaplin admin. Do not leave it to default unless you know what you are doing!</dd>
+    <dt>browserid.users</dt>
+    <dd>An array of email addresses of people that should have access to the backend admin. If they have not created an account with the BrowserID provider, they will be offered a chance to do so on their first login to the site.</dd>
 </dl>
+
+Finally start the service, take note that if you wish to start it on a specific port, pass it in as the `process.env.PORT ` variable:
+
+```bash
+$ node start.js
+```
+
+If you need to define your custom page types and styles (you do), follow the guide associated with the [blað](https://github.com/radekstepan/blad) CMS project page.
+
+## Database backup
+
+Two helpful functions have been exposed to let you export/import pages of your CMS. Call them like so:
+
+```bash
+$ node export.js
+$ node import.js
+```
+
+**Be aware that the import wipes the database clean first!**
