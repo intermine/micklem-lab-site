@@ -51,6 +51,13 @@ Define the config for your site in `config.json`:
     <dd>An array of email addresses of people that should have access to the backend admin. If they have not created an account with the BrowserID provider, they will be offered a chance to do so on their first login to the site.</dd>
 </dl>
 
+You will have noticed that the `mongodb` and `browserid.salt` values are not provided. If you are deploying to [ukraine](https://github.com/radekstepan/ukraine) cloud, set these as follows (from within this directory):
+
+```bash
+$ chernobyl env <ukraine_ip> . DATABASE_URL=<mongo_uri>
+$ chernobyl env <ukraine_ip> . API_SALT=<salt>
+```
+
 Finally start the service, take note that if you wish to start it on a specific port, pass it in as the `process.env.PORT ` variable:
 
 ```bash
