@@ -4,10 +4,10 @@
         "cache": {
             "tweet": {
                 "value": {
-                    "created_at": "Mon Dec 10 10:57:52 +0000 2012",
-                    "id": 278091156192120830,
-                    "id_str": "278091156192120832",
-                    "text": "InterMine bug fixes: Update your checkout to get the latest updates. More info here: http://t.co/YAWqMqz5",
+                    "created_at": "Tue Dec 11 12:52:16 +0000 2012",
+                    "id": 278482330648186880,
+                    "id_str": "278482330648186880",
+                    "text": "Feedback? Ideas? Feature requests? You can always leave our developers a message on GitHub: https://t.co/AI6hlQ0H",
                     "source": "web",
                     "truncated": false,
                     "in_reply_to_status_id": null,
@@ -25,7 +25,7 @@
                         "description": "InterMine is a data warehouse system for the integration and analysis of biological data. Follow us for news and analysis spotlights.",
                         "protected": false,
                         "followers_count": 28,
-                        "friends_count": 59,
+                        "friends_count": 58,
                         "listed_count": 0,
                         "created_at": "Fri Apr 20 14:39:08 +0000 2012",
                         "favourites_count": 0,
@@ -33,7 +33,7 @@
                         "time_zone": null,
                         "geo_enabled": false,
                         "verified": false,
-                        "statuses_count": 50,
+                        "statuses_count": 51,
                         "lang": "en",
                         "contributors_enabled": false,
                         "is_translator": false,
@@ -63,7 +63,7 @@
                     "retweeted": false,
                     "possibly_sensitive": false
                 },
-                "modified": "2012-12-11T11:45:53.445Z"
+                "modified": "2012-12-14T19:22:21.220Z"
             }
         },
         "description": "root document, the label:homepage",
@@ -95,10 +95,10 @@
     },
     {
         "_id": "50abba42c623e00400000002",
-        "body": "    Dr Gos \tMicklem\r\n    Cambridge Systems Biology Centre\r\n    Tennis Court Road\r\n    Cambridge\r\n    CB2 1QR\r\n\r\n    Phone: (+44) 1223 760240\r\n    Fax:   (+44) 1223 333992\r\n",
+        "body": "    Dr Gos Micklem\r\n    Cambridge Systems Biology Centre\r\n    Tennis Court Road\r\n    Cambridge\r\n    CB2 1QR\r\n\r\n    Phone: (+44) 1223 760240\r\n    Fax:   (+44) 1223 333992\r\n",
         "description": "",
         "email": "info@intermine.org",
-        "modified": "2012-11-21T20:26:34.973Z",
+        "modified": "2012-12-17T12:02:59.688Z",
         "public": true,
         "title": "Contact",
         "type": "ContactsDocument",
@@ -337,14 +337,15 @@
         "_id": "50abba42c623e00400000013"
     },
     {
+        "_id": "50abba42c623e00400000014",
         "body": "#List of current staff",
         "description": "",
-        "modified": "2012-11-19T14:14:49.947Z",
+        "modified": "2012-12-17T12:01:33.681Z",
+        "preferential": "Gos Micklem",
         "public": true,
         "title": "People",
         "type": "PeopleHolderDocument",
-        "url": "/people",
-        "_id": "50abba42c623e00400000014"
+        "url": "/people"
     },
     {
         "type": "PersonDocument",
@@ -749,29 +750,13 @@
     },
     {
         "_id": "50abba42c623e0040000002c",
+        "author": "Micklem G",
         "cache": {
             "pubmed": {
                 "value": [
                     {
-                        "Id": "23166508",
-                        "PubDate": "2012 Nov",
-                        "Title": "Biochemical Diversification through Foreign Gene Expression in Bdelloid Rotifers.",
-                        "FullJournalName": "PLoS genetics",
-                        "Authors": [
-                            "Boschetti C",
-                            "Carr A",
-                            "Crisp A",
-                            "Eyres I",
-                            "Wang-Koh Y",
-                            "Lubzens E",
-                            "Barraclough TG",
-                            "Micklem G",
-                            "Tunnacliffe A"
-                        ]
-                    },
-                    {
                         "Id": "23023984",
-                        "PubDate": "2012 Sep 27",
+                        "PubDate": "2012 Dec 1",
                         "Title": "InterMine: a flexible data warehouse system for the integration and analysis of heterogeneous biological data.",
                         "FullJournalName": "Bioinformatics (Oxford, England)",
                         "Authors": [
@@ -790,6 +775,23 @@
                             "Wakeling M",
                             "Watkins X",
                             "Micklem G"
+                        ]
+                    },
+                    {
+                        "Id": "23166508",
+                        "PubDate": "2012 Nov",
+                        "Title": "Biochemical Diversification through Foreign Gene Expression in Bdelloid Rotifers.",
+                        "FullJournalName": "PLoS genetics",
+                        "Authors": [
+                            "Boschetti C",
+                            "Carr A",
+                            "Crisp A",
+                            "Eyres I",
+                            "Wang-Koh Y",
+                            "Lubzens E",
+                            "Barraclough TG",
+                            "Micklem G",
+                            "Tunnacliffe A"
                         ]
                     },
                     {
@@ -1313,11 +1315,11 @@
                         ]
                     }
                 ],
-                "modified": "2012-11-23T10:54:31.804Z"
+                "modified": "2012-12-14T15:55:13.534Z"
             }
         },
         "description": "links to all label:publications fetched from PubMed",
-        "modified": "2012-10-18T16:38:44.006Z",
+        "modified": "2012-12-17T12:01:46.279Z",
         "public": true,
         "type": "PublicationsHolderDocument",
         "url": "/publications"
