@@ -1,4 +1,17 @@
 <div class="twelve columns">
+    <label>Preferential names</label>
+    <div class="row">
+        <div class="six columns">
+            <input type="text" name="preferential" value="<%= @preferential %>" />
+        </div>
+        <div class="six columns">
+            A comma separated list of names that are to appear before any names
+            sorted alphabetically. Order of preferential names is preserved.
+        </div>
+    </div>
+</div>
+
+<div class="twelve columns">
     <label>Page body</label>
     <div class="row">
         <div class="nine columns">

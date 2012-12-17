@@ -6,14 +6,16 @@ sax = require('sax').parser(true)
 
 class exports.PublicationsHolderDocument extends blað.Type
 
-    eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Micklem%20G%5bauthor%5d'
+    eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term='
     eSummary: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id='
 
     render: (done) ->        
         # Check if data in store is old.
         if @store.isOld 'pubmed', 1, 'day'
+            # Which author are we fetching publications for?
+            author = encodeURIComponent "#{@author}[author]"
             # Grab hold of publication IDs.
-            request @eSearch, (err, res, body) =>
+            request @eSearch + author, (err, res, body) =>
                 if err or res.statusCode isnt 200 then done @
                 @xmlToIds body, (ids) =>
 

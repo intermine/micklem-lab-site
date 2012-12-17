@@ -1,0 +1,11 @@
+<div class="twelve columns">
+    <label>PubMed Author</label>
+    <div class="row">
+        <div class="six columns">
+            <input type="text" name="author" value="<%= @author %>" />
+        </div>
+        <div class="six columns">
+            Provide a string to search for against the PubMed publications database (e.g. <code>Micklem G</code>)
+        </div>
+    </div>
+</div>
