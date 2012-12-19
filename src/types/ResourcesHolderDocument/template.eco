@@ -19,8 +19,8 @@
 
 <!-- callout hero banner -->
 <div class="row">
-    <div id="splash" class="twelve columns dark">
-        <img src="/site/img/splashes/gos-coffee.jpg" />
+    <div id="splash" class="twelve columns light">
+        <img src="/site/img/splashes/airplane.jpg" />
         <h1>Resources</h1>
     </div>
 </div>

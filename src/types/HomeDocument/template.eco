@@ -19,8 +19,8 @@
 
 <!-- callout hero banner -->
 <div class="row">
-    <div id="splash" class="dark twelve columns">
-        <img class="right" src="/site/img/splashes/balloon.jpg" />
+    <div id="splash" class="light twelve columns">
+        <img class="right" src="/site/img/splashes/pillars.jpg" />
         <h1><%= @splashTitle %></h1>
         <h2><%= @splashSubtitle %></h2>
     </div>
