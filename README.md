@@ -10,7 +10,7 @@ $ make
 $ sudo make install
 ```
 
-The CMS uses [MongoDB](http://www.mongodb.org/display/DOCS/Quickstart) as a backend database; to install and start it up:
+The CMS uses [MongoDB 2](http://www.mongodb.org/display/DOCS/Quickstart) as a backend database; to install and start it up:
 
 ```bash
 $ sudo apt-get install mongodb
