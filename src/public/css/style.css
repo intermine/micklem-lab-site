@@ -249,7 +249,13 @@ article.callout h1 {
   color: #fff;
   font-weight: 400;
   font-size: 18px;
+  padding: 0;
+}
+article.callout h1 a {
   padding: 12px 10px;
+  display: block;
+  color: #fff !important;
+  text-decoration: none;
 }
 article.callout h2,
 article.callout h3 {
