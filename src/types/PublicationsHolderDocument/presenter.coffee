@@ -11,7 +11,7 @@ class exports.PublicationsHolderDocument extends blað.Type
 
     render: (done) ->        
         # Check if data in store is old.
-        if @store.isOld 'pubmed', 1, 'day'
+        if @store.isOld 'pubmedPublications', 1
             # Which author are we fetching publications for?
             author = encodeURIComponent "#{@author}[author]"
             # Grab hold of publication IDs.
@@ -19,31 +19,41 @@ class exports.PublicationsHolderDocument extends blað.Type
                 if err or res.statusCode isnt 200 then done @
                 @xmlToIds body, (ids) =>
 
-                    # Grab hold of the actual publications.
-                    request @eSummary + ids.join(','), (err, res, body) =>
-                        if err or res.statusCode isnt 200 then done @
-                        @xmlToPubs body, (pubmed) =>
+                    # Do we actually have any new publications to get?
+                    oldIds = @store.get 'pubmedPublicationIds'
+                    unless (ids < oldIds or oldIds < ids)
+                        # Render the 'old' stuff.
+                        @publications = @store.get 'pubmedPublications'
+                        done @
+                    else
+                        # Save the new IDs.
+                        @store.save 'pubmedPublicationIds', ids, =>
 
-                            # Reverse chronological order sort.
-                            pubmed = pubmed.sort (a, b) ->
-                                parseDate = (date) ->
-                                    return 0 if date is 0
-                                    [ year, month, day] = date.split(' ')
-                                    month = month or 'Jan' ; day = day or 1
-                                    p = kronic.parse([ day, month, year ].join(' '))
-                                    if p then p.getTime() else 0
+                            # Grab hold of the actual publications.
+                            request @eSummary + ids.join(','), (err, res, body) =>
+                                if err or res.statusCode isnt 200 then done @
+                                @xmlToPubs body, (pubmed) =>
 
-                                if parseDate(b.PubDate) > parseDate(a.PubDate) then 1
-                                else -1
+                                    # Reverse chronological order sort.
+                                    pubmed = pubmed.sort (a, b) ->
+                                        parseDate = (date) ->
+                                            return 0 if date is 0
+                                            [ year, month, day] = date.split(' ')
+                                            month = month or 'Jan' ; day = day or 1
+                                            p = kronic.parse([ day, month, year ].join(' '))
+                                            if p then p.getTime() else 0
 
-                            # Cache the new data.
-                            @store.save 'pubmed', pubmed, =>
-                                # Finally render.
-                                @publications = pubmed
-                                done @
+                                        if parseDate(b.PubDate) > parseDate(a.PubDate) then 1
+                                        else -1
+
+                                    # Cache the new data.
+                                    @store.save 'pubmedPublications', pubmed, =>
+                                        # Finally render.
+                                        @publications = pubmed
+                                        done @
         else
             # Render the 'old' stuff.
-            @publications = @store.get 'pubmed'
+            @publications = @store.get 'pubmedPublications'
             done @
 
     # Take eSearch XML and call back with ids.
@@ -52,7 +62,7 @@ class exports.PublicationsHolderDocument extends blað.Type
         
         sax.onopentag = (node) -> open = node.name is 'Id'
         sax.ontext = (text) -> if open and parseInt text then ids.push text
-        sax.onend = -> cb ids
+        sax.onend = -> cb ids.sort()
         
         sax.write(xml).close()
 
