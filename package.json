@@ -1,7 +1,7 @@
 {
     "name": "micklem-lab-site",
     "author": "Radek <rs676@cam.ac.uk>",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "dependencies": {
         "blad": "latest",
         "marked": "0.2.5",

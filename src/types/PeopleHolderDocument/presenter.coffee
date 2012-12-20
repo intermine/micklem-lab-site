@@ -17,7 +17,17 @@ class exports.PeopleHolderDocument extends blað.Type
 
         # Sort people Gos first, then by surname.
         @people = @children(0).sort (a, b) =>
-            others = -> if b.name.split(' ').pop() > a.name.split(' ').pop() then -1 else 1
+            # For 'normal' people sort surname first, then the rest of the names.
+            others = ->
+                aFirstNames = a.name.split(' ') ; bFirstNames = b.name.split(' ')
+                aSurname = aFirstNames.pop()    ; bSurname = bFirstNames.pop()
+                if bSurname > aSurname then -1
+                else
+                    if aSurname > bSurname then 1
+                    else
+                        if bFirstNames > aFirstNames then -1 else 1
+            
+            # How many preferential people do we have?
             switch preferential.length
                 when 0
                     return others()
