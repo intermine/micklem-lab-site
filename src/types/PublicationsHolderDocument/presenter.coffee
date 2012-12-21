@@ -9,7 +9,7 @@ class exports.PublicationsHolderDocument extends blað.Type
     eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term='
     eSummary: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id='
 
-    render: (done) ->        
+    render: (done) ->
         # Check if data in store is old.
         if @store.isOld 'pubmedPublications', 1
             # Which author are we fetching publications for?
@@ -21,7 +21,7 @@ class exports.PublicationsHolderDocument extends blað.Type
 
                     # Do we actually have any new publications to get?
                     oldIds = @store.get 'pubmedPublicationIds'
-                    unless (ids < oldIds or oldIds < ids)
+                    if oldIds and not (ids < oldIds or oldIds < ids)
                         # Render the 'old' stuff.
                         @publications = @store.get 'pubmedPublications'
                         done @
