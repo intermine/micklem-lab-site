@@ -11,7 +11,7 @@ class exports.PublicationsHolderDocument extends blað.Type
 
     render: (done) ->
         # Check if data in store is old.
-        if @store.isOld 'pubmedPublications', 1
+        if @store.isOld 'pubmedPublications', 1, 'day'
             # Which author are we fetching publications for?
             author = encodeURIComponent "#{@author}[author]"
             # Grab hold of publication IDs.
