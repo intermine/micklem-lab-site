@@ -20,7 +20,8 @@
 <!-- callout hero banner -->
 <div class="row">
     <div id="splash" class="twelve columns light">
-        <img src="/site/img/splashes/airplane.jpg" />
+        <!--<img src="/site/img/splashes/airplane.jpg" />-->
+        <img src="/site/img/splashes/pillars-medium.jpg" />
         <h1>Resources</h1>
     </div>
 </div>
