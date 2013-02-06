@@ -46,11 +46,16 @@
 
         <%- @body %>
 
+        <% if @grants and @grants.length isnt 0: %>
         <p>Current funding includes:</p>
-        <ul>
+        <table>
             <% for grant in @grants: %>
-                <li><a href="<%= grant.url %>"><%= grant.title %></a></li>
+                <tr>
+                    <td><%= grant.funding %></td>
+                    <td><a href="<%= grant.url %>"><%= grant.title %></a></td>
+                </tr>
             <% end %>
-        </ul>
+        </table>
+        <% end %>
     </article>
 </div>
