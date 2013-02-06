@@ -6,7 +6,7 @@ sax = require('sax').parser(true)
 
 class exports.PublicationsHolderDocument extends blað.Type
 
-    eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term='
+    eSearch: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmax=999&term='
     eSummary: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id='
 
     render: (done) ->
