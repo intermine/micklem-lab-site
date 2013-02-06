@@ -15,8 +15,15 @@ class exports.PeopleHolderDocument extends blað.Type
             else
                 preferential = [ @preferential ]
 
+        # Filter down people to active members.
+        @alumni = false ; people = []
+        for ch in @children(0)
+            if ch.type is 'PersonDocument'
+                if ch.alumnus then @alumni = true
+                else people.push ch
+
         # Sort people Gos first, then by surname.
-        @people = @children(0).sort (a, b) =>
+        @people = people.sort (a, b) =>
             # For 'normal' people sort surname first, then the rest of the names.
             others = ->
                 aFirstNames = a.name.split(' ') ; bFirstNames = b.name.split(' ')
@@ -32,7 +39,6 @@ class exports.PeopleHolderDocument extends blað.Type
                 when 0
                     return others()
                 when 1
-                    console.log a.name, b.name
                     if a.name is preferential[0] then return -1
                     else if b.name is preferential[0] then return 1
                     else return others()

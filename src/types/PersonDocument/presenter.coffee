@@ -7,7 +7,7 @@ class exports.PersonDocument extends blað.Type
 
     render: (done) ->
         # Get other projects.
-        @siblings (people) =>
+        @siblings (siblings) =>
             @parent (parent) =>
                 preferential = []
                 # Do we have preferential names?
@@ -19,8 +19,18 @@ class exports.PersonDocument extends blað.Type
                     else
                         preferential = [ parent.preferential ]
 
+                # Filter down people to active members.
+                @alumni = false ; people = []
+                for sib in siblings
+                    if sib.type is 'PersonDocument'
+                        if sib.alumnus then @alumni = true
+                        else people.push sib
+
                 # Sort people Gos first, then by surname.
                 @people = people.sort (a, b) =>
+                    # Is this person an alumnus?
+                    if a.alumnus? then @alumni = true
+                    
                     # For 'normal' people sort surname first, then the rest of the names.
                     others = ->
                         aFirstNames = a.name.split(' ') ; bFirstNames = b.name.split(' ')
@@ -36,7 +46,6 @@ class exports.PersonDocument extends blað.Type
                         when 0
                             return others()
                         when 1
-                            console.log a.name, b.name
                             if a.name is preferential[0] then return -1
                             else if b.name is preferential[0] then return 1
                             else return others()

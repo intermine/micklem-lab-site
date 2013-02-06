@@ -3,9 +3,17 @@
     <input type="text" name="name" value="<%= @name %>" />
 </div>
 
-<div class="six columns">
+<div class="five columns">
     <label>Person position</label>
     <input type="text" name="position" value="<%= @position %>" />
+</div>
+
+<div class="one columns">
+    <label>Alumnus?</label>
+    <select name="alumnus">
+        <option value="true" <% if @alumnus: %>selected="selected"<% end %>>Yes</option>
+        <option value="false" <% if !@alumnus: %>selected="selected"<% end %>>No</option>
+    </select>
 </div>
 
 <div class="three columns">
