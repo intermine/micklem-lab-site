@@ -9,3 +9,15 @@
         </div>
     </div>
 </div>
+
+<div class="twelve columns">
+    <label>PubMed Extra Publication IDs</label>
+    <div class="row">
+        <div class="six columns">
+            <input type="text" name="extraIds" value="<%= @extraIds %>" />
+        </div>
+        <div class="six columns">
+            Provide extra publication IDs if they are not retrieved by the above author search (e.g. <code>11237011, 8197474</code>)
+        </div>
+    </div>
+</div>

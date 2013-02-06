@@ -18,6 +18,9 @@ class exports.PublicationsHolderDocument extends blað.Type
             request @eSearch + author, (err, res, body) =>
                 if err or res.statusCode isnt 200 then done @
                 @xmlToIds body, (ids) =>
+                    # Enrich with extra identifiers not returned by the above query.
+                    if @extraIds
+                        ids = ids.concat @extraIds.replace(/\s/g, '').split(',')
 
                     # Do we actually have any new publications to get?
                     oldIds = @store.get 'pubmedPublicationIds'
