@@ -27,10 +27,7 @@ class exports.PersonDocument extends blað.Type
                         else people.push sib
 
                 # Sort people Gos first, then by surname.
-                @people = people.sort (a, b) =>
-                    # Is this person an alumnus?
-                    if a.alumnus? then @alumni = true
-                    
+                @people = people.sort (a, b) =>                    
                     # For 'normal' people sort surname first, then the rest of the names.
                     others = ->
                         aFirstNames = a.name.split(' ') ; bFirstNames = b.name.split(' ')
