@@ -39,8 +39,8 @@
     <article id="projects" class="callout rouge six columns">
         <h1><a href="/projects">Projects</a></h1>
 
-        <ul>
-            <% for project in @sub.ProjectDocument[0...2]: %>
+        <ul class="scrollbar">
+            <% for project in @sub.ProjectDocument: %>
                 <li>
                     <div class="row">
                         <div class="nine columns">
@@ -55,7 +55,7 @@
             <% end %>
         </ul>
 
-        <h4>For more details and a complete list, see <a href="/projects">Projects</a>.</h4>
+        <h4>For more details see <a href="/projects">Projects</a>.</h4>
     </article>
 </div>
 
@@ -83,8 +83,8 @@
         <article id="grants" class="callout patina">
             <h1><a href="/funding">Funding</a></h1>
 
-            <ul>
-                <% for grant in @sub.GrantDocument[0...2]: %>
+            <ul class="scrollbar">
+                <% for grant in @sub.GrantDocument: %>
                     <li>
                         <div class="row">
                             <div class="nine columns">
@@ -99,7 +99,7 @@
                 <% end %>
             </ul>
 
-            <h4>For more details and a complete list, see <a href="/funding">Funding</a>.</h4>
+            <h4>For more details see <a href="/funding">Funding</a>.</h4>
         </article>
 
         <!-- news -->
