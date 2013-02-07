@@ -41,8 +41,10 @@ class exports.PublicationsHolderDocument extends blað.Type
                                     pubmed = pubmed.sort (a, b) ->
                                         parseDate = (date) ->
                                             return 0 if date is 0
-                                            [ year, month, day] = date.split(' ')
-                                            month = month or 'Jan' ; day = day or 1
+                                            
+                                            [ year, month, day ] = date.split(' ')
+                                            year = parseInt(year) ; month = month or 'Jan' ; day = parseInt(day) or 1
+                                            
                                             p = kronic.parse([ day, month, year ].join(' '))
                                             if p then p.getTime() else 0
 
