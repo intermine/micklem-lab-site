@@ -34,7 +34,7 @@
             <% for publication in @publications: %>
                 <tr>
                     <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/<%= publication.Id %>"><%= publication.Title %></a></td>
-                    <td style="white-space:nowrap"><%= publication.PubDate %></td>
+                    <td style="white-space:nowrap"><%= publication.PubDate.split(' ')[0] %></td>
                     <td><%= publication.FullJournalName %></td>
                     <td>
                         <% if publication.Authors.length > 5: %>
