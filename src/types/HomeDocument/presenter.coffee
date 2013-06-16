@@ -1,12 +1,10 @@
 { blað } = require 'blad'
 
-marked = require 'marked'
-request = require 'request'
-kronic = require 'kronic-node'
+marked   = require 'marked'
+request  = require 'request'
+kronic   = require 'kronic-node'
 
 class exports.HomeDocument extends blað.Type
-
-    twitter: 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=intermineorg&count=1'
 
     render: (done) ->
         # Markdown.
@@ -52,25 +50,7 @@ class exports.HomeDocument extends blað.Type
         @sub.ProjectDocument = randomArray @sub.ProjectDocument
         @sub.GrantDocument = randomArray @sub.GrantDocument
 
-        # Check if data in store is old.
-        if @store.isOld 'tweet', 1, 'day'
-            # Fetch the latest tweet.
-            request @twitter, (err, res, body) =>
-                if err or res.statusCode isnt 200 then done @
-                    
-                tweet = JSON.parse(body).pop()
-
-                # Cache the new data.
-                @store.save 'tweet', tweet, =>
-                    # Get the tweet, add ago time and render.
-                    @tweet = @store.get 'tweet'
-                    @tweet.ago = kronic.format new Date @tweet.created_at
-                    done @
-        else
-            # Get the tweet, add ago time and render.
-            @tweet = @store.get 'tweet'
-            @tweet.ago = kronic.format new Date @tweet.created_at
-            done @
+        done @
 
 # Seed array randomly.
 randomArray = (arr) ->

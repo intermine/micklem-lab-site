@@ -1,10 +1,10 @@
 {
     "name": "micklem-lab-site",
     "author": "Radek <rs676@cam.ac.uk>",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "dependencies": {
         "blad": "latest",
-        "marked": "0.2.5",
+        "marked": "0.2.8",
         "kronic-node": "0.0.1",
         "request": "2.9.203",
         "sax": "0.4.2"

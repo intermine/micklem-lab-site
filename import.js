@@ -2,6 +2,8 @@
 var fs      = require('fs');
 var service = require('blad');
 
-var config  = JSON.parse(fs.readFileSync('./config.json'));
+var config  = require('./config.json');
+
+config.mongodb = process.env.DATABASE_URL || config.mongodb;
 
 service.db.import(config, __dirname, process.exit);
