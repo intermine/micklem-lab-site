@@ -1,8 +1,8 @@
 { blað } = require 'blad'
 
-request = require 'request'
-kronic = require 'kronic-node'
-sax = require('sax').parser(true)
+request  = require 'request'
+kronic   = require 'kronic-node'
+sax      = require('sax').parser(true)
 
 class exports.PublicationsHolderDocument extends blað.Type
 
@@ -16,7 +16,8 @@ class exports.PublicationsHolderDocument extends blað.Type
             author = encodeURIComponent "#{@author}[author]"
             # Grab hold of publication IDs.
             request @eSearch + author, (err, res, body) =>
-                if err or res.statusCode isnt 200 then done @
+                return done @ if err or res.statusCode isnt 200
+                
                 @xmlToIds body, (ids) =>
                     # Enrich with extra identifiers not returned by the above query.
                     if @extraIds
@@ -34,7 +35,8 @@ class exports.PublicationsHolderDocument extends blað.Type
 
                             # Grab hold of the actual publications.
                             request @eSummary + ids.join(','), (err, res, body) =>
-                                if err or res.statusCode isnt 200 then done @
+                                return done @ if err or res.statusCode isnt 200
+                                
                                 @xmlToPubs body, (pubmed) =>
 
                                     # Reverse chronological order sort.

@@ -76,3 +76,7 @@ $ node import.js
 ```
 
 **Be aware that the import wipes the database clean first!**
+
+## Twitter timeline
+
+Twitter no longer allows public access to a user's timeline. We are using [Twitter RSS](http://twitter-rss.com/) to fetch a user's timeline now.
