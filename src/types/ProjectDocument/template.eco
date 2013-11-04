@@ -21,7 +21,7 @@
 <!-- callout hero banner -->
 <div class="row">
     <div id="splash" class="twelve columns">
-        <img src="/site/img/splashes/stomach-long.jpg" />
+        <img src="/site/img/splashes/lines.jpg" />
         <h1><% if @current: %>Projects<% else: %>Past projects<% end %></h1>
     </div>
 </div>

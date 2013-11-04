@@ -4,10 +4,10 @@
     "version": "1.3.2",
     "dependencies": {
         "blad": "latest",
-        "marked": "0.2.8",
+        "marked": "~0.2.10",
         "kronic-node": "0.0.1",
-        "request": "2.9.203",
-        "sax": "0.4.2"
+        "request": "~2.27.0",
+        "sax": "~0.5.5"
     },
     "scripts": {
         "start": "start.js"
