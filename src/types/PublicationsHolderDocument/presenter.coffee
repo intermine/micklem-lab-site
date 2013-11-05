@@ -1,4 +1,5 @@
-{ blað } = require 'blad'
+{ blað }  = require 'blad'
+additions = require '../additions'
 
 request  = require 'request'
 kronic   = require 'kronic-node'
@@ -38,6 +39,10 @@ class exports.PublicationsHolderDocument extends blað.Type
                                 return done @ if err or res.statusCode isnt 200
                                 
                                 @xmlToPubs body, (pubmed) =>
+                                    # Translate journal names.
+                                    pubmed.map (pub) ->
+                                        pub.FullJournalName = additions.translate pub.FullJournalName
+                                        pub
 
                                     # Reverse chronological order sort.
                                     pubmed = pubmed.sort (a, b) ->
