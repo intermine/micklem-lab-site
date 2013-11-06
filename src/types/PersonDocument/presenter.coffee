@@ -1,7 +1,7 @@
-{ blað } = require 'blad'
+{ blað }  = require 'blad'
+additions = require '../additions'
 
 marked = require 'marked'
-kronic = require 'kronic-node'
 
 class exports.PersonDocument extends blað.Type
 
@@ -76,16 +76,7 @@ class exports.PersonDocument extends blað.Type
                             'authors':   @["pubAuthors#{i}"] or ''
                             'published': @["pubDate#{i}"] or 0
 
-                @publications = pubs.sort (a, b) ->
-                    parseDate = (date) ->
-                        return 0 if date is 0
-                        [ year, month, day] = date.split(' ')
-                        month = month or 'Jan' ; day = day or 1
-                        p = kronic.parse([ day, month, year ].join(' '))
-                        if p then p.getTime() else 0
-
-                    if parseDate(b.published) > parseDate(a.published) then 1
-                    else -1
+                @publications = additions.pubmedSort pubs, 'published'
                 
                 # We done.
                 done @

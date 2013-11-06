@@ -1,9 +1,7 @@
 { blað }  = require 'blad'
 additions = require '../additions'
 
-request  = require 'request'
-kronic   = require 'kronic-node'
-sax      = require('sax').parser(true)
+request = require 'request'
 
 class exports.PublicationsHolderDocument extends blað.Type
 
@@ -19,7 +17,7 @@ class exports.PublicationsHolderDocument extends blað.Type
             request @eSearch + author, (err, res, body) =>
                 return done @ if err or res.statusCode isnt 200
                 
-                @xmlToIds body, (ids) =>
+                additions.xmlToIds body, (ids) =>
                     # Enrich with extra identifiers not returned by the above query.
                     if @extraIds
                         ids = ids.concat @extraIds.replace(/\s/g, '').split(',')
@@ -38,25 +36,14 @@ class exports.PublicationsHolderDocument extends blað.Type
                             request @eSummary + ids.join(','), (err, res, body) =>
                                 return done @ if err or res.statusCode isnt 200
                                 
-                                @xmlToPubs body, (pubmed) =>
+                                additions.xmlToPubs body, (pubmed) =>
                                     # Translate journal names.
                                     pubmed.map (pub) ->
                                         pub.FullJournalName = additions.translate pub.FullJournalName
                                         pub
 
                                     # Reverse chronological order sort.
-                                    pubmed = pubmed.sort (a, b) ->
-                                        parseDate = (date) ->
-                                            return 0 if date is 0
-                                            
-                                            [ year, month, day ] = date.split(' ')
-                                            year = parseInt(year) ; month = month or 'Jan' ; day = parseInt(day) or 1
-                                            
-                                            p = kronic.parse([ day, month, year ].join(' '))
-                                            if p then p.getTime() else 0
-
-                                        if parseDate(b.PubDate) > parseDate(a.PubDate) then 1
-                                        else -1
+                                    pubmed = additions.pubmedSort pubmed
 
                                     # Cache the new data.
                                     @store.save 'pubmedPublications', pubmed, =>
@@ -67,42 +54,3 @@ class exports.PublicationsHolderDocument extends blað.Type
             # Render the 'old' stuff.
             @publications = @store.get 'pubmedPublications'
             done @
-
-    # Take eSearch XML and call back with ids.
-    xmlToIds: (xml, cb) ->
-        open = false ; ids = []
-        
-        sax.onopentag = (node) -> open = node.name is 'Id'
-        sax.ontext = (text) -> if open and parseInt text then ids.push text
-        sax.onend = -> cb ids.sort()
-        
-        sax.write(xml).close()
-
-    # Take eSummary XML and call back with publications.
-    xmlToPubs: (xml, cb) ->
-        docs = [] ; doc = {} ; tag = {} ; authors = []
-
-        sax.onattribute = (attr) -> tag[attr.name] = attr.value
-
-        sax.onclosetag = (node) ->
-            switch node
-                when 'DocSum'
-                    doc.Authors = authors
-                    docs.push doc
-                    doc = {} ; authors = []
-                when 'Id'
-                    doc.Id = tag.Text
-                    tag = {}
-                when 'Item'
-                    switch tag.Name
-                        when 'PubDate', 'FullJournalName', 'Title' then doc[tag.Name] = tag.Text
-                        when 'Author' then authors.push tag.Text
-                    tag = {}
-
-        sax.ontext = (text) ->
-            text = text.replace(/\s+/g, ' ')
-            if text isnt ' ' then tag.Text = text
-
-        sax.onend = -> cb docs
-
-        sax.write(xml).close()
