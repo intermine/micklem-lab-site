@@ -7,7 +7,8 @@
         "marked": "~0.2.10",
         "kronic-node": "0.0.1",
         "request": "~2.27.0",
-        "sax": "~0.5.5"
+        "sax": "~0.5.5",
+        "twit": "~1.1.11"
     },
     "scripts": {
         "start": "start.js"

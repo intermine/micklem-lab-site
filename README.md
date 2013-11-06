@@ -1,6 +1,6 @@
-# Micklem Lab site
+#Micklem Lab site
 
-## Getting started
+##Getting started
 
 The CMS that powers the site is developed in [Node.js](http://nodejs.org/), download the tarball and install it if not present:
 
@@ -32,8 +32,6 @@ Define the config for your site in `config.json`:
         "provider": "https://browserid.org/verify",
         "salt":     "use process.env.API_SALT instead",
         "users": [
-            "radek.stepan@gmail.com",
-            "jelena121@gmail.com",
             "g.micklem@gen.cam.ac.uk"
         ]
     }
@@ -66,7 +64,7 @@ $ node start.js
 
 If you need to define your custom page types and styles (you do), follow the guide associated with the [blað](https://github.com/radekstepan/blad) CMS project page.
 
-## Database backup
+##Database backup
 
 Two helpful functions have been exposed to let you export/import pages of your CMS. Call them like so:
 
@@ -77,6 +75,19 @@ $ node import.js
 
 **Be aware that the import wipes the database clean first!**
 
-## Twitter timeline
+##Twitter
 
-Twitter no longer allows public access to a user's timeline. We are using [Twitter RSS](http://twitter-rss.com/) to fetch a user's timeline now.
+Twitter no longer allows public access to a user's timeline. One needs to use OAuth on the server which requires us to pass 4 environment variables. These are:
+
+1. `TWITTER_CONSUMER_KEY`
+1. `TWITTER_CONSUMER_SECRET`
+1. `TWITTER_ACCESS_TOKEN`
+1. `TWITTER_ACCESS_TOKEN_SECRET`
+
+Pass them all in like so:
+
+```bash
+$ TWITTER_CONSUMER_KEY=abc123 node start.js
+```
+
+These can be found on the [dev page](https://dev.twitter.com/apps/4569504/oauth). Not providing these values will simply not show the latest tweet on the homepage.

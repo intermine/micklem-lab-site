@@ -109,8 +109,8 @@
 
             <ul>
                 <li>
-                    <h2><a target="_blank" href="<%= @tweet.link %>"><%- @tweet.title %></a></h2>
-                    <p><%= @tweet.ago %></p>
+                    <h2><a target="_blank" href="http://twitter.com/intermineorg/status/<%= @tweet.id_str %>"><%- @tweet.text %></a></h2>
+                    <p><%= @tweet.created_at %></p>
                 </li>
                 <li>
                     <p>For more news visit our <a href="/news">Blog</a> or <a target="_blank" href="http://twitter.com/intermineorg/">@intermineorg</a> Twitter page.</p>

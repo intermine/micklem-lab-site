@@ -3,6 +3,8 @@ additions = require '../additions'
 
 marked  = require 'marked'
 request = require 'request'
+kronic  = require 'kronic-node'
+Twit    = require 'twit'
 
 class exports.HomeDocument extends blað.Type
 
@@ -41,7 +43,40 @@ class exports.HomeDocument extends blað.Type
         @sub.ProjectDocument = randomArray @sub.ProjectDocument
         @sub.GrantDocument = randomArray @sub.GrantDocument
 
-        done @
+        # Do we have Twitter env vars?
+        opts = {}
+        ( opts[do v[8...].toLowerCase] = process.env[v] for v in [
+            'TWITTER_CONSUMER_KEY'
+            'TWITTER_CONSUMER_SECRET'
+            'TWITTER_ACCESS_TOKEN'
+            'TWITTER_ACCESS_TOKEN_SECRET'
+        ] when process.env[v] )
+
+        return done @ if Object.keys(opts).length isnt 4
+
+        # Do we have it cached?
+        if @store.isOld 'tweet', 1, 'day'
+            # New client.
+            (new Twit(opts)).get 'statuses/user_timeline', (err, res) =>
+                return done @ if err
+                return done @ unless res instanceof Array
+                return done @ unless res.length
+
+                tweet = res[0]
+
+                # Format date.
+                tweet.created_at = kronic.format new Date tweet.created_at
+
+                # Cache it.
+                @store.save 'tweet', tweet, =>
+                    # Finally render.
+                    @tweet = tweet
+                    done @
+
+        else
+            # Render the 'old' stuff.
+            @tweet = @store.get 'tweet'
+            done @
 
 # Seed array randomly.
 randomArray = (arr) ->
