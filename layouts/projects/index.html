@@ -1,0 +1,27 @@
+{% extends '../layout.html' %}
+
+{% import 'sidebar.html' as sidebar %}
+{% import '../hero.html' as hero %}
+
+{% set projects = rel.children('/projects')|filter(filter) %}
+
+{% block content %}
+  {{ hero.block(title, 'lines') }}
+
+  <div class="row rouge">
+    {{ sidebar.block(filter == 'current', projects) }}
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>{{ title }}</h1>
+
+      {% parent %}
+
+      <ul>
+        {% for project in projects %}
+          <li><a href="{{ project.url }}">{{ project.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </article>
+  </div>
+{% endblock content %}

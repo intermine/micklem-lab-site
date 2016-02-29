@@ -1,0 +1,42 @@
+{% extends '../layout.html' %}
+
+{% import 'sidebar.html' as sidebar %}
+{% import '../hero.html' as hero %}
+
+{% set projects = rel.siblings(url, '/projects/archive')|filter(current || archived) %}
+
+{% block content %}
+  {% if current %}
+    {{ hero.block('Projects', 'lines') }}
+  {% else %}
+    {{ hero.block('Past projects', 'lines') }}
+  {% endif %}
+
+  <div class="row rouge">
+    {{ sidebar.block(current, projects) }}
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>{{ title }}</h1>
+
+      {% parent %}
+
+      {% if publications %}
+        <h2>Selected publications</h2>
+
+        <table>
+          <tbody>
+          {% for pub in publications %}
+            <tr>
+              <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/{{ pub.pubmedId }}">{{ pub.title }}</a></td>
+              <td style="white-space:nowrap">{{ pub.date }}</td>
+              <td>{{ pub.journal }}</td>
+              <td><span class="author">{{ pub.authors }}</span></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </article>
+  </div>
+{% endblock content %}

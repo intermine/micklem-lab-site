@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <!-- callout hero banner -->
+  <div class="row">
+    <div id="splash" class="light twelve columns">
+      <img class="right" src="/public/img/splashes/pillars-long.jpg" />
+      <h1>Micklem Lab</h1>
+      <h2>Integrative genomics</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- welcome -->
+    <article id="welcome" class="main six columns">
+      <h1>Welcome to the Micklem Lab website!</h1>
+      <img src="/public/img/faces/gos.jpg" />
+      {% parent %}
+    </article>
+
+    <!-- projects -->
+    <article id="projects" class="callout rouge six columns">
+      <h1><a href="/projects">Projects</a></h1>
+
+      <ul class="scrollbar">
+        {% for project in rel.children('/projects', '1', '/projects/archive')|shuffle %}
+          <li>
+            <div class="row">
+              <div class="nine columns">
+                <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
+                {{ project.summary|raw }}
+              </div>
+              <div class="three columns">
+                <img src="/public/img/projects-thumbs/{{ project.image }}" />
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <h4>For more details see <a href="/projects">Projects</a>.</h4>
+    </article>
+  </div>
+
+  <div class="row">
+    <!-- publications -->
+    <article id="projects" class="callout bismark six columns">
+      <h1><a href="/publications">Selected publications</a></h1>
+
+      <ul>
+        {% for pub in publications %}
+          <li>
+            <h2><a href="{{ pub.url }}">{{ pub.title }}</a></h2>
+            <h3>{{ pub.journal }} ({{ pub.date }})</h3>
+            <p>{{ pub.authors }}</p>
+          </li>
+        {% endfor %}
+        <li>
+          <p>For a full list, see <a href="/publications">Publications</a>.</p>
+        </li>
+      </ul>
+    </article>
+
+    <div class="six columns">
+      <!-- grants -->
+      <article id="grants" class="callout patina">
+        <h1><a href="/funding">Funding</a></h1>
+
+        <ul class="scrollbar">
+          {% for grant in rel.children('/funding') %}
+            <li>
+              <div class="row">
+                <div class="nine columns">
+                  <h2><a href="{{ grant.url }}">{{ grant.title }}</a></h2>
+                  {{ grant.summary }}
+                </div>
+                <div class="three columns">
+                  <img src="{{ grant.summaryImage }}" />
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <h4>For more details see <a href="/funding">Funding</a>.</h4>
+      </article>
+    </div>
+  </div>
+{% endblock content %}

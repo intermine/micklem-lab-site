@@ -1,0 +1,27 @@
+{% macro block(current, projects) %}
+<aside class="sidebar three columns">
+  {% if projects.length %}
+    {% if current %}
+      <h2 class="primary">Our current projects</h2>
+    {% else %}
+      <h2 class="primary">Our past projects</h2>
+    {% endif %}
+    <nav>
+      <ul>
+        {% for project in projects %}
+          <li>
+            <h3><a href="{{ project.url }}">{{ project.title }}</a></h3>
+            {{ project.summary|raw }}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+
+  {% if current %}
+    <h2 class="secondary link"><a href="/projects/archive">Past projects</a></h2>
+  {% else %}
+    <h2 class="secondary link"><a href="/projects">Current projects</a></h2>
+  {% endif %}
+</aside>
+{% endmacro %}
