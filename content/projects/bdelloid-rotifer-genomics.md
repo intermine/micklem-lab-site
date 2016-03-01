@@ -14,7 +14,7 @@ publications:
     pubmedId: 22901238
   -
     authors: Boschetti C, Carr A, Crisp A, Eyres I, ..., Tunnacliffe A
-    date: 2012 Nov 15"
+    date: 2012 Nov 15
     journal: PLoS Genetics
     title: Biochemical Diversification through Foreign Gene Expression in Bdelloid Rotifers
     url: http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003035

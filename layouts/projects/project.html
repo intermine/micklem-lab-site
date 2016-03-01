@@ -3,17 +3,17 @@
 {% import 'sidebar.html' as sidebar %}
 {% import '../hero.html' as hero %}
 
-{% set projects = rel.siblings(url, '/projects/archive')|filter(current || archived) %}
-
 {% block content %}
   {% if current %}
+    {% set projects = rel.siblings(url, '/projects/archive')|filter('current') %}
     {{ hero.block('Projects', 'lines') }}
   {% else %}
     {{ hero.block('Past projects', 'lines') }}
+    {% set projects = rel.siblings(url, '/projects/archive')|filter('archived') %}
   {% endif %}
 
   <div class="row rouge">
-    {{ sidebar.block(current, projects) }}
+    {{ sidebar.block(current, projects, 'Other') }}
 
     <!-- main content -->
     <article class="main nine columns">

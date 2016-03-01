@@ -1,11 +1,7 @@
-{% macro block(current, projects) %}
+{% macro block(current, projects, prefix) %}
 <aside class="sidebar three columns">
   {% if projects.length %}
-    {% if current %}
-      <h2 class="primary">Our current projects</h2>
-    {% else %}
-      <h2 class="primary">Our past projects</h2>
-    {% endif %}
+    <h2 class="primary">{{ prefix }} {% if current %}current{% else %}past{% endif %} projects</h2>
     <nav>
       <ul>
         {% for project in projects %}
