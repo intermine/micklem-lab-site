@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% import 'hero.html' as hero %}
+
+{% block content %}
+  {{ hero.block(title, 'airplane-long', true) }}
+
+  <div class="row patina">
+    <!-- main content -->
+    <article class="main twelve columns">
+      <table>
+        <tbody>
+          {% for res in rel.children('/resources') %}
+            <tr>
+              <td>
+                <a target="_blank" href="{{ res.link }}">
+                  <img src="/public/img/resources-thumbs/{{ res.image  }}" title="{{ res.title }} logo" />
+                </a>
+              </td>
+              <td>
+                <a target="_blank" href="{{ res.link }}">{{ res.title }}</a>
+                {{ res.contents|raw }}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+  </div>
+{% endblock content %}

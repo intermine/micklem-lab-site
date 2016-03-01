@@ -1,7 +1,5 @@
 ---
 template: index.html
-helpers:
-  projects: projects.js
 publications:
   -
     title: Biochemical Diversification through Foreign Gene Expression in Bdelloid Rotifers
