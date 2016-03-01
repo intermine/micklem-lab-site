@@ -1,0 +1,44 @@
+{% extends '../layout.html' %}
+
+{% import '../hero.html' as hero %}
+{% import 'table.html' as table %}
+
+{% block content %}
+  {% set grants = rel.siblings(url, '/funding') %}
+  {{ hero.block('Funding', 'windows-long') }}
+
+  <div class="row patina">
+    <aside class="sidebar three columns">
+      <h2 class="primary">Other current funding</h2>
+      <nav>
+        <ul>
+          {% for grant in grants %}
+            <li>
+              <h3><a href="{{ grant.url }}">{{ grant.title }}</a></h3>
+              {{ grant.summary|raw }}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>{{ title }}</h1>
+
+      <div class="row">
+        <table class="nine columns">
+          <tbody>
+            {% if funding %}{{ table.row('Funding body', funding) }}{% endif %}
+            {% if pi %}{{ table.row('Principal Investigator', pi) }}{% endif %}
+            {% if co %}{{ table.row('Co-investigators', co) }}{% endif %}
+          </tbody>
+        </table>
+        <div class="three columns">
+          <img src="/public/img/grants-icons/{{ image }}" />
+        </div>
+      </div>
+
+      {% parent %}
+    </article>
+{% endblock content %}

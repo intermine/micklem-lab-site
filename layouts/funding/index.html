@@ -1,0 +1,41 @@
+{% extends '../layout.html' %}
+
+{% import '../hero.html' as hero %}
+
+{% set grants = rel.children('/funding') %}
+
+{% block content %}
+  {{ hero.block(title, 'windows-long') }}
+
+  <div class="row patina">
+    <aside class="sidebar three columns">
+      <h2 class="primary">All current funding</h2>
+      <nav>
+        <ul>
+          {% for grant in grants %}
+            <li>
+              <h3><a href="{{ grant.url }}">{{ grant.title }}</a></h3>
+              {{ grant.summary|raw }}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>{{ title }}</h1>
+
+      {% parent %}
+
+      <table>
+        {% for grant in grants %}
+          <tr>
+            <td>{{ grant.funding }}</td>
+            <td><a href="{{ grant.url }}">{{ grant.title }}</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </article>
+  </div>
+{% endblock content %}
