@@ -233,12 +233,8 @@ article.main table td a {
   color: #659995;
   text-decoration: underline;
 }
-article.main table td span.author {
+article.main table td span.authors {
   white-space: nowrap;
-}
-article.main table td span.author:not(:last-child):after {
-  content: ", ";
-  display: "block";
 }
 article.callout {
   margin-top: 20px;

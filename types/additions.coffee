@@ -7,6 +7,7 @@ rules =
     'Current biology : CB': 'Current biology'
     'Development (Cambridge, England)': 'Development'
     'Science (New York, N.Y.)': 'Science'
+    'Database : the journal of biological databases and curation': 'Database'
 
 module.exports =
     translate: (input) ->
@@ -16,11 +17,11 @@ module.exports =
     # Take eSearch XML and call back with ids.
     xmlToIds: (xml, cb) ->
         open = false ; ids = []
-        
+
         sax.onopentag = (node) -> open = node.name is 'Id'
         sax.ontext = (text) -> if open and parseInt text then ids.push text
         sax.onend = -> cb ids.sort()
-        
+
         sax.write(xml).close()
 
     # Take eSummary XML and call back with publications.
@@ -57,10 +58,10 @@ module.exports =
         arr.sort (a, b) ->
             parseDate = (date) ->
                 return 0 if date is 0
-                
+
                 [ year, month, day ] = date.split(' ')
                 year = parseInt(year) ; month = month or 'Jan' ; day = parseInt(day) or 1
-                
+
                 p = kronic.parse([ day, month, year ].join(' '))
                 if p then p.getTime() else 0
 

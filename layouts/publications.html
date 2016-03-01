@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% import 'hero.html' as hero %}
+
+{% block content %}
+  {{ hero.block(title, 'green-moss-long', true) }}
+
+  <div class="row bismark">
+    <!-- main content -->
+    <article class="main twelve columns">
+      <table>
+        <tbody>
+        {% for pub in publications %}
+          <tr>
+            <td><a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/{{ pub.Id }}">{{ pub.Title }}</a></td>
+            <td style="white-space:nowrap">{{ pub.PubDate|split(' ')|first }}</td>
+            <td>{{ pub.FullJournalName }}</td>
+            <td>
+              <span class="authors">
+                {% if pub.Authors.length > 5 %}
+                  {{ pub.Authors|slice(0, 5)|join(', ') }}, et al.
+                {% else %}
+                  {{ pub.Authors|join(', ') }}
+                {% endif %}
+              </span>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </article>
+  </div>
+{% endblock content %}

@@ -3,6 +3,9 @@
   "author": "Radek <rs676@cam.ac.uk>",
   "version": "2.0.0",
   "dependencies": {
-    "lodash": "^4.5.1"
+    "kronic-node": "0.0.1",
+    "lodash": "^4.5.1",
+    "request": "^2.69.0",
+    "sax": "^1.1.5"
   }
 }
