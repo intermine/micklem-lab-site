@@ -1,0 +1,23 @@
+{% extends '../layout.html' %}
+
+{% import '../hero.html' as hero %}
+
+{% set people = rel.children('/people', 1, '/people/alumni')|filter('alumnus')|sortBy('nameLast') %}
+
+{% block content %}
+  {{ hero.block(title, 'punts-long') }}
+
+  <div class="row bismark">
+    <!-- main content -->
+    <article class="main twelve columns">
+      <h1>Past members</h1>
+
+      <p>Past members include:</p>
+      <ul>
+        {% for alumnus in people %}
+          <li><strong>{{ alumnus.nameFirst }} {{ alumnus.nameLast }}</strong>, {{ alumnus.position }}</li>
+        {% endfor %}
+      </ul>
+    </article>
+  </div>
+{% endblock content %}

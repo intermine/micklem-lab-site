@@ -1,0 +1,52 @@
+{% extends '../layout.html' %}
+
+{% import '../hero.html' as hero %}
+
+{% set people = rel.children('/people', 1, '/people/alumni')|filter('current')|sortBy('nameLast') %}
+{% set pi = people|filter('boss')|first %}
+
+{% block content %}
+  {{ hero.block(title, 'punts-long') }}
+
+  <div class="row bismark">
+    <!-- main content -->
+    <aside class="sidebar three columns">
+      <h2 class="primary">Group member pages</h2>
+      <nav>
+        <ul>
+          {% for person in people|filter('template') %}
+            <li>
+              <h3><a href="{{ person.url }}">{{ person.nameFirst }} {{ person.nameLast }}</a></h3>
+              <p>{{ person.position }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <h2 class="secondary link"><a href="/people/alumni">Past members</a></h2>
+    </aside>
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>List of current staff</h1>
+
+      <ul>
+        <li>
+          <strong><a href="{{ pi.url }}">{{ pi.nameFirst }} {{ pi.nameLast }}</a></strong>, {{ pi.position }}
+        </li>
+        {% for person in people %}
+          {% if not person.boss %}
+            <li>
+              {% if person.template %}
+                <strong><a href="{{ person.url }}">{{ person.nameFirst }} {{ person.nameLast }}</a></strong>,
+              {% else %}
+                <strong>{{ person.nameFirst }} {{ person.nameLast }}</strong>,
+              {% endif %}
+              {{ person.position }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </article>
+  </div>
+{% endblock content %}
