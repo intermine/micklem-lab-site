@@ -1,0 +1,79 @@
+{% extends '../layout.html' %}
+
+{% import '../hero.html' as hero %}
+
+{% set people = rel.children('/people', 1, '/people/alumni')|filter('current')|filter('template')|sortBy('nameLast') %}
+
+{% block content %}
+  {{ hero.block('People', 'punts-long') }}
+
+  <div class="row bismark">
+    <!-- main content -->
+    <aside class="sidebar three columns">
+      {% if people.length > 1 %}
+        <h2 class="primary">Other member pages</h2>
+        <nav>
+          <ul>
+            {% if not boss %}
+              <li>
+                <h3><a href="{{ pi.url }}">{{ pi.nameFirst }} {{ pi.nameLast }}</a></h3>
+                <p>{{ pi.position }}</p>
+              </li>
+            {% endif %}
+            {% for person in people %}
+              {% if person.url != url %}
+                <li>
+                  <h3><a href="{{ person.url }}">{{ person.nameFirst }} {{ person.nameLast }}</a></h3>
+                  <p>{{ person.position }}</p>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav>
+
+      <h2 class="secondary link"><a href="/people/alumni">Past members</a></h2>
+    </aside>
+
+    <!-- main content -->
+    <article class="main nine columns">
+      <h1>{{ nameFirst }} {{ nameLast }}</h1>
+      <h2>{{ position }}</h2>
+
+      {% if image %}
+        <div class="row">
+          <div class="nine columns">
+            {% parent %}
+          </div>
+          <div class="three columns">
+            <img src="/public/img/faces/{{ image }}" />
+          </div>
+        </div>
+      {% else %}
+        {% parent %}
+      {% endif %}
+
+      {% if interests %}
+        <h2>Research interests</h2>
+        <p>{{ interests }}</p>
+      {% endif %}
+
+      {% if publications %}
+        <h2>Selected publications</h2>
+
+        <table>
+          <tbody>
+          {% for pub in publications %}
+            <tr>
+              <td><a target="_blank" href="{{ pub.url }}">{{ pub.title }}</a></td>
+              <td style="white-space:nowrap">{{ pub.date }}</td>
+              <td>{{ pub.journal }}</td>
+              <td><span class="author">{{ pub.authors }}</span></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </article>
+  </div>
+{% endblock content %}

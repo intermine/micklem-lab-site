@@ -14,11 +14,17 @@
       <h2 class="primary">Group member pages</h2>
       <nav>
         <ul>
+          <li>
+            <h3><a href="{{ pi.url }}">{{ pi.nameFirst }} {{ pi.nameLast }}</a></h3>
+            <p>{{ pi.position }}</p>
+          </li>
           {% for person in people|filter('template') %}
-            <li>
-              <h3><a href="{{ person.url }}">{{ person.nameFirst }} {{ person.nameLast }}</a></h3>
-              <p>{{ person.position }}</p>
-            </li>
+            {% if not person.boss %}
+              <li>
+                <h3><a href="{{ person.url }}">{{ person.nameFirst }} {{ person.nameLast }}</a></h3>
+                <p>{{ person.position }}</p>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>
