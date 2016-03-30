@@ -2,7 +2,11 @@
   "name": "micklem-lab-site",
   "author": "Radek <rs676@cam.ac.uk>",
   "version": "2.0.0",
+  "scripts": {
+    "start": "./node_modules/blad/bin/blad.js --port 5000 --source ./"
+  },
   "dependencies": {
+    "blad": "git+https://github.com/radekstepan/blad.git#ea9110b902a54da83cef9d14aaed64c3660f5a38",
     "kronic-node": "0.0.1",
     "lodash": "^4.5.1",
     "request": "^2.69.0",
